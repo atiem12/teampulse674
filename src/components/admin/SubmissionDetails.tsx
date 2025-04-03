@@ -1,4 +1,3 @@
-
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -18,6 +17,10 @@ interface SubmissionDetailsProps {
 }
 
 const SubmissionDetails = ({ submission, onBack }: SubmissionDetailsProps) => {
+  const openEndedResponsesRecord: Record<string, string> = {
+    ...submission.openEndedResponses
+  };
+
   return (
     <Card>
       <CardHeader>
@@ -135,23 +138,23 @@ const SubmissionDetails = ({ submission, onBack }: SubmissionDetailsProps) => {
                   <TableBody>
                     <TableRow>
                       <TableCell className="font-medium">Highlight</TableCell>
-                      <TableCell>{generateTextSummary(submission.openEndedResponses.highlight)}</TableCell>
+                      <TableCell>{generateTextSummary(openEndedResponsesRecord.highlight)}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-medium">Challenge</TableCell>
-                      <TableCell>{generateTextSummary(submission.openEndedResponses.challenge)}</TableCell>
+                      <TableCell>{generateTextSummary(openEndedResponsesRecord.challenge)}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-medium">Improvement</TableCell>
-                      <TableCell>{generateTextSummary(submission.openEndedResponses.improvement)}</TableCell>
+                      <TableCell>{generateTextSummary(openEndedResponsesRecord.improvement)}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-medium">Recognition</TableCell>
-                      <TableCell>{generateTextSummary(submission.openEndedResponses.recognition)}</TableCell>
+                      <TableCell>{generateTextSummary(openEndedResponsesRecord.recognition)}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell className="font-medium">Additional</TableCell>
-                      <TableCell>{generateTextSummary(submission.openEndedResponses.additional)}</TableCell>
+                      <TableCell>{generateTextSummary(openEndedResponsesRecord.additional)}</TableCell>
                     </TableRow>
                   </TableBody>
                 </Table>
@@ -163,7 +166,7 @@ const SubmissionDetails = ({ submission, onBack }: SubmissionDetailsProps) => {
             <div className="mb-8">
               <h3 className="text-lg font-medium text-gray-800 mb-2">AI-Generated Insights</h3>
               <p className="text-sm text-gray-600 mb-4">
-                The AI has analyzed the submission and extracted key insights and recommendations.
+                The AI has analyzed the submission to provide overall insights and recommendations.
               </p>
             </div>
             
@@ -172,32 +175,14 @@ const SubmissionDetails = ({ submission, onBack }: SubmissionDetailsProps) => {
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-md">Key Points</CardTitle>
-                  <CardDescription>Important themes extracted from responses</CardDescription>
+                  <CardDescription>Important themes extracted from all responses</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-medium text-gray-700 mb-1">From Highlights</h4>
+                      <h4 className="font-medium text-gray-700 mb-1">From All Responses</h4>
                       <ul className="list-disc pl-5 space-y-1">
-                        {extractKeyPoints(submission.openEndedResponses.highlight).map((point, index) => (
-                          <li key={index} className="text-sm">{point}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-medium text-gray-700 mb-1">From Challenges</h4>
-                      <ul className="list-disc pl-5 space-y-1">
-                        {extractKeyPoints(submission.openEndedResponses.challenge).map((point, index) => (
-                          <li key={index} className="text-sm">{point}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-medium text-gray-700 mb-1">From Improvements</h4>
-                      <ul className="list-disc pl-5 space-y-1">
-                        {extractKeyPoints(submission.openEndedResponses.improvement).map((point, index) => (
+                        {extractKeyPoints(Object.values(openEndedResponsesRecord).join(' ')).map((point, index) => (
                           <li key={index} className="text-sm">{point}</li>
                         ))}
                       </ul>
@@ -210,28 +195,14 @@ const SubmissionDetails = ({ submission, onBack }: SubmissionDetailsProps) => {
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-md">Recommendations</CardTitle>
-                  <CardDescription>AI-generated suggestions based on feedback</CardDescription>
+                  <CardDescription>AI-generated suggestions based on overall feedback</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="p-3 bg-amber-50 border border-amber-100 rounded-md">
                       <h4 className="font-medium text-amber-800 mb-1">Overall Recommendation</h4>
                       <p className="text-sm text-amber-700">
-                        {generateOverallRecommendation(submission.openEndedResponses)}
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-medium text-gray-700 mb-1">For Challenges</h4>
-                      <p className="text-sm p-2 bg-gray-50 rounded border">
-                        {generateRecommendation(submission.openEndedResponses.challenge)}
-                      </p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-medium text-gray-700 mb-1">For Improvements</h4>
-                      <p className="text-sm p-2 bg-gray-50 rounded border">
-                        {generateRecommendation(submission.openEndedResponses.improvement)}
+                        {generateOverallRecommendation(openEndedResponsesRecord)}
                       </p>
                     </div>
                   </div>
@@ -248,15 +219,15 @@ const SubmissionDetails = ({ submission, onBack }: SubmissionDetailsProps) => {
                 <div className="space-y-2">
                   <div className="flex items-start gap-2">
                     <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-sm flex-shrink-0">1</div>
-                    <p className="text-sm">Schedule a follow-up conversation to discuss the challenges raised.</p>
+                    <p className="text-sm">Schedule a follow-up conversation to discuss the key themes in this feedback.</p>
                   </div>
                   <div className="flex items-start gap-2">
                     <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-sm flex-shrink-0">2</div>
-                    <p className="text-sm">Implement one targeted improvement based on the feedback.</p>
+                    <p className="text-sm">Implement one targeted improvement based on the overall recommendation.</p>
                   </div>
                   <div className="flex items-start gap-2">
                     <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-sm flex-shrink-0">3</div>
-                    <p className="text-sm">Recognize team members mentioned for their positive contributions.</p>
+                    <p className="text-sm">Share the summarized insights with the team to promote transparency.</p>
                   </div>
                 </div>
               </CardContent>

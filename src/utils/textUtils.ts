@@ -1,3 +1,4 @@
+
 /**
  * Generates a simplified summary of a longer text
  * This creates a summary by truncating the text and extracting key points
@@ -17,22 +18,22 @@ export const generateTextSummary = (text: string, maxLength: number = 100): stri
 };
 
 /**
- * Uses AI to analyze text and extract key points
- * @param text The text to analyze
- * @returns An array of key points extracted from the text
+ * Uses AI to analyze text and extract key points from all responses
+ * @param text The combined text from all responses to analyze
+ * @returns An array of key points extracted from all responses
  */
 export const extractKeyPoints = (text: string): string[] => {
   if (!text || text.trim() === '') {
-    return ['No response provided'];
+    return ['No responses provided'];
   }
 
   // This is a simple implementation that extracts sentences
   // In a real implementation, this would call an AI API
   const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
   
-  // For simplicity, let's just return the first 2 sentences as key points
+  // For simplicity, let's return the first 3 sentences as key points
   // In a real implementation, this would use AI to identify truly important points
-  return sentences.slice(0, 2).map(s => s.trim());
+  return sentences.slice(0, 3).map(s => s.trim());
 };
 
 /**
@@ -82,7 +83,39 @@ export const generateOverallRecommendation = (
   // Combine all responses to get a comprehensive view
   const allResponses = Object.values(openEndedResponses).join(' ');
   
-  // Generate a more comprehensive recommendation based on all responses
-  // In a real implementation, this would use more sophisticated AI analysis
-  return generateRecommendation(allResponses);
+  // Generate a comprehensive recommendation based on all responses
+  const lowercaseText = allResponses.toLowerCase();
+  
+  // Look for multiple themes and provide a more holistic recommendation
+  const themes = [];
+  
+  if (lowercaseText.includes('workload') || lowercaseText.includes('busy') || 
+      lowercaseText.includes('stress') || lowercaseText.includes('pressure') ||
+      lowercaseText.includes('overwhelm') || lowercaseText.includes('burn out')) {
+    themes.push('workload management');
+  }
+  
+  if (lowercaseText.includes('communication') || lowercaseText.includes('unclear') || 
+      lowercaseText.includes('confusion') || lowercaseText.includes('informed')) {
+    themes.push('communication');
+  }
+  
+  if (lowercaseText.includes('support') || lowercaseText.includes('help') || 
+      lowercaseText.includes('guidance') || lowercaseText.includes('alone')) {
+    themes.push('support');
+  }
+  
+  if (lowercaseText.includes('recognition') || lowercaseText.includes('appreciate') || 
+      lowercaseText.includes('valued') || lowercaseText.includes('effort')) {
+    themes.push('recognition');
+  }
+  
+  if (themes.length === 0) {
+    return 'Consider scheduling a team discussion to better understand team needs and improve overall satisfaction.';
+  } else if (themes.length === 1) {
+    return generateRecommendation(themes[0]);
+  } else {
+    // Create a comprehensive recommendation addressing multiple themes
+    return `Focus on improving ${themes.slice(0, -1).join(', ')} and ${themes.slice(-1)} to address the main concerns raised in the feedback. Consider implementing a structured approach to tackle these themes together.`;
+  }
 };
