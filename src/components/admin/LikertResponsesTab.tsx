@@ -28,6 +28,48 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
 
   return (
     <div className="space-y-16">
+      {/* Likert Scale Responses Table - Moved to the top */}
+      <div>
+        <h3 className="text-lg font-medium mb-4">Likert Scale Responses</h3>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-1/2">Question</TableHead>
+              <TableHead className="w-1/3">Response</TableHead>
+              <TableHead className="w-1/6">Score (1-5)</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>I feel my current workload is manageable and sustainable.</TableCell>
+              <TableCell>{getLikertText(submission.likertResponses.workload)}</TableCell>
+              <TableCell>{submission.likertResponses.workload || "N/A"}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>I feel supported by my team and manager.</TableCell>
+              <TableCell>{getLikertText(submission.likertResponses.support)}</TableCell>
+              <TableCell>{submission.likertResponses.support || "N/A"}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Communication within my team has been clear and effective this month.</TableCell>
+              <TableCell>{getLikertText(submission.likertResponses.communication)}</TableCell>
+              <TableCell>{submission.likertResponses.communication || "N/A"}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>I see opportunities to learn and grow in my role.</TableCell>
+              <TableCell>{getLikertText(submission.likertResponses.growth)}</TableCell>
+              <TableCell>{submission.likertResponses.growth || "N/A"}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>I understand how my work contributes to our team's goals.</TableCell>
+              <TableCell>{getLikertText(submission.likertResponses.purpose)}</TableCell>
+              <TableCell>{submission.likertResponses.purpose || "N/A"}</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+
+      {/* Data Visualization - Now below the responses table */}
       <Card>
         <CardContent className="pt-6 pb-8">
           <h3 className="text-lg font-medium mb-6">Response Visualization</h3>
@@ -75,46 +117,6 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
           </div>
         </CardContent>
       </Card>
-
-      <div>
-        <h3 className="text-lg font-medium mb-4">Likert Scale Responses</h3>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-1/2">Question</TableHead>
-              <TableHead className="w-1/3">Response</TableHead>
-              <TableHead className="w-1/6">Score (1-5)</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow>
-              <TableCell>I feel my current workload is manageable and sustainable.</TableCell>
-              <TableCell>{getLikertText(submission.likertResponses.workload)}</TableCell>
-              <TableCell>{submission.likertResponses.workload || "N/A"}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>I feel supported by my team and manager.</TableCell>
-              <TableCell>{getLikertText(submission.likertResponses.support)}</TableCell>
-              <TableCell>{submission.likertResponses.support || "N/A"}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Communication within my team has been clear and effective this month.</TableCell>
-              <TableCell>{getLikertText(submission.likertResponses.communication)}</TableCell>
-              <TableCell>{submission.likertResponses.communication || "N/A"}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>I see opportunities to learn and grow in my role.</TableCell>
-              <TableCell>{getLikertText(submission.likertResponses.growth)}</TableCell>
-              <TableCell>{submission.likertResponses.growth || "N/A"}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>I understand how my work contributes to our team's goals.</TableCell>
-              <TableCell>{getLikertText(submission.likertResponses.purpose)}</TableCell>
-              <TableCell>{submission.likertResponses.purpose || "N/A"}</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </div>
     </div>
   );
 };
