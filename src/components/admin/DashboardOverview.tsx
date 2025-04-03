@@ -23,7 +23,7 @@ const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewP
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div className="lg:col-span-1">
               <h3 className="text-sm font-medium">Average Scores (1-5)</h3>
               <div className="mt-3 space-y-2">
@@ -50,7 +50,7 @@ const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewP
               </div>
             </div>
             
-            <div className="lg:col-span-4">
+            <div className="lg:col-span-2">
               {submissions.length > 0 && (
                 <Tabs defaultValue="trends">
                   <TabsList className="w-full mb-2">
@@ -59,7 +59,7 @@ const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewP
                   </TabsList>
                   
                   <TabsContent value="trends" className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="h-72">
                         <TrendChart 
                           submissions={submissions} 
@@ -76,6 +76,8 @@ const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewP
                           color="#10b981"
                         />
                       </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="h-72">
                         <TrendChart 
                           submissions={submissions} 
@@ -84,8 +86,6 @@ const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewP
                           color="#f59e0b"
                         />
                       </div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="h-72">
                         <TrendChart 
                           submissions={submissions} 
@@ -94,6 +94,8 @@ const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewP
                           color="#8b5cf6"
                         />
                       </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="h-72">
                         <TrendChart 
                           submissions={submissions} 
@@ -106,7 +108,7 @@ const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewP
                   </TabsContent>
                   
                   <TabsContent value="distribution" className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="h-72">
                         <ResponseDistributionChart 
                           submissions={submissions} 
@@ -123,6 +125,8 @@ const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewP
                           color="#10b981"
                         />
                       </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="h-72">
                         <ResponseDistributionChart 
                           submissions={submissions} 
@@ -131,8 +135,6 @@ const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewP
                           color="#f59e0b"
                         />
                       </div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="h-72">
                         <ResponseDistributionChart 
                           submissions={submissions} 
@@ -141,6 +143,8 @@ const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewP
                           color="#8b5cf6"
                         />
                       </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="h-72">
                         <ResponseDistributionChart 
                           submissions={submissions} 
