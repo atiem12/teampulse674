@@ -27,8 +27,8 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
   };
 
   return (
-    <div className="space-y-16">
-      {/* Likert Scale Responses Table - Moved to the top */}
+    <div className="space-y-12">
+      {/* Likert Scale Responses Table */}
       <div>
         <h3 className="text-lg font-medium mb-4">Likert Scale Responses</h3>
         <Table>
@@ -69,7 +69,25 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
         </Table>
       </div>
 
-      {/* Data Visualization - Now below the responses table */}
+      {/* Overall Averages Section - Added above the data visualization */}
+      <Card className="bg-slate-50">
+        <CardContent className="pt-6">
+          <h3 className="text-lg font-medium mb-4">Response Summary</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {chartData.map((item) => (
+              <div key={item.name} className="p-4 bg-white rounded-lg border shadow-sm">
+                <div className="text-sm text-muted-foreground mb-1">{item.label}</div>
+                <div className="flex items-baseline">
+                  <span className="text-2xl font-bold mr-1">{item.value}</span>
+                  <span className="text-xs text-muted-foreground">/5</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Data Visualization */}
       <Card>
         <CardContent className="pt-6 pb-8">
           <h3 className="text-lg font-medium mb-6">Response Visualization</h3>
