@@ -15,7 +15,7 @@ const LikertMetricsSection = ({ submissions }: LikertMetricsSectionProps) => {
         <h3 className="text-lg font-medium">Overall Likert Metrics</h3>
       </div>
       <div className="grid grid-cols-6 gap-4">
-        <div className="p-4 bg-white rounded-lg border shadow-sm col-span-2">
+        <div className="p-4 bg-white rounded-lg border shadow-sm">
           <div className="text-sm text-muted-foreground mb-1">Total Average</div>
           <div className="flex items-baseline">
             <span className="text-2xl font-bold text-blue-700 mr-1">{overallAverage}</span>
@@ -30,7 +30,7 @@ const LikertMetricsSection = ({ submissions }: LikertMetricsSectionProps) => {
           </div>
         </div>
         <div className="p-4 bg-white rounded-lg border shadow-sm">
-          <div className="text-sm text-muted-foreground mb-1">Team Support</div>
+          <div className="text-sm text-muted-foreground mb-1">Support</div>
           <div className="flex items-baseline">
             <span className="text-2xl font-bold mr-1">{calculateAverageScore(submissions, "support")}</span>
             <span className="text-xs text-muted-foreground">/5</span>
@@ -63,4 +63,3 @@ const LikertMetricsSection = ({ submissions }: LikertMetricsSectionProps) => {
 };
 
 export default LikertMetricsSection;
-
