@@ -29,6 +29,30 @@ export const calculateAverageScore = (
   return (total / submissions.length).toFixed(1);
 };
 
+// Calculate the overall average score across all Likert questions
+export const calculateOverallAverageScore = (submissions: Submission[]): string => {
+  if (submissions.length === 0) return "0";
+  
+  const categories: (keyof Submission["likertResponses"])[] = ["workload", "support", "communication", "growth", "purpose"];
+  
+  const total = submissions.reduce((sum, submission) => {
+    let submissionTotal = 0;
+    let answeredCount = 0;
+    
+    categories.forEach(category => {
+      const value = parseInt(submission.likertResponses[category]) || 0;
+      if (value > 0) {
+        submissionTotal += value;
+        answeredCount++;
+      }
+    });
+    
+    return sum + (answeredCount > 0 ? submissionTotal / answeredCount : 0);
+  }, 0);
+  
+  return (total / submissions.length).toFixed(1);
+};
+
 // Convert numeric Likert responses to text for better readability
 export const getLikertText = (value: string): string => {
   const map: Record<string, string> = {
