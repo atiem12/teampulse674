@@ -8,6 +8,12 @@ import OpenEndedQuestion from "@/components/OpenEndedQuestion";
 import ProgressBar from "@/components/ProgressBar";
 import { toast } from "sonner";
 
+// Simple utility to get current date in YYYY-MM-DD format
+const getCurrentDate = () => {
+  const date = new Date();
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+};
+
 const PulseCheck = () => {
   const navigate = useNavigate();
   const [currentSection, setCurrentSection] = useState(0);
@@ -113,7 +119,24 @@ const PulseCheck = () => {
   };
 
   const handleSubmit = () => {
-    // In a real application, you would send the data to a server here
+    // Create a submission object with all responses and metadata
+    const submission = {
+      id: Date.now().toString(), // Simple unique ID based on timestamp
+      date: getCurrentDate(),
+      submittedAt: new Date().toISOString(),
+      likertResponses,
+      openEndedResponses
+    };
+
+    // Get existing submissions from localStorage or initialize empty array
+    const existingSubmissions = JSON.parse(localStorage.getItem('pulseCheckSubmissions') || '[]');
+    
+    // Add new submission to the array
+    const updatedSubmissions = [...existingSubmissions, submission];
+    
+    // Save updated array back to localStorage
+    localStorage.setItem('pulseCheckSubmissions', JSON.stringify(updatedSubmissions));
+    
     console.log("Likert responses:", likertResponses);
     console.log("Open-ended responses:", openEndedResponses);
     
