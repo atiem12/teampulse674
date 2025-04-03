@@ -1,4 +1,3 @@
-
 /**
  * Generates a simplified summary of a longer text
  * This creates a summary by truncating the text and extracting key points
@@ -46,9 +45,6 @@ export const generateRecommendation = (text: string): string => {
     return 'No concerns to address';
   }
 
-  // This is a mock implementation - in a real app, you would call an API
-  // For now, we'll use simple heuristics to generate recommendations
-  
   const lowercaseText = text.toLowerCase();
   
   if (lowercaseText.includes('workload') || lowercaseText.includes('busy') || 
@@ -68,7 +64,7 @@ export const generateRecommendation = (text: string): string => {
   
   if (lowercaseText.includes('recognition') || lowercaseText.includes('appreciate') || 
       lowercaseText.includes('valued') || lowercaseText.includes('effort')) {
-    return 'Implement more consistent recognition practices to acknowledge team members' contributions.';
+    return "Implement more consistent recognition practices to acknowledge team members' contributions.";
   }
   
   // Default recommendation if no specific patterns are matched
