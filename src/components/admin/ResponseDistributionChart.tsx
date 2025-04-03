@@ -49,11 +49,11 @@ const ResponseDistributionChart = ({
   return (
     <div className="w-full">
       <h3 className="text-sm font-medium mb-2">{title}</h3>
-      <div className="h-48">
+      <div className="h-52">
         <ChartContainer config={config}>
           <BarChart 
             data={chartData} 
-            margin={{ top: 10, right: 10, left: 10, bottom: 40 }} // Increased bottom margin
+            margin={{ top: 10, right: 20, left: 20, bottom: 50 }} // Increased all margins
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis 
@@ -67,7 +67,7 @@ const ResponseDistributionChart = ({
               label={{ 
                 value: "Rating", 
                 position: "bottom", 
-                dy: 30, 
+                dy: 35, // Increased distance for the label
                 fontSize: 12 
               }}
             />
@@ -75,7 +75,7 @@ const ResponseDistributionChart = ({
               tick={{ fontSize: 10 }}
               tickLine={false}
               axisLine={false}
-              width={40} // Added width to prevent label cutting
+              width={45} // Increased width to prevent label cutting
             />
             <ChartTooltip
               content={
