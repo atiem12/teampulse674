@@ -21,7 +21,7 @@ const ResponseSummariesTab = ({ submission }: ResponseSummariesTabProps) => {
           <CardTitle className="text-lg">Response Visualization</CardTitle>
           <CardDescription>Visual representation of this submission's data</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex justify-center">
           <RadarChart submission={submission} />
         </CardContent>
       </Card>
