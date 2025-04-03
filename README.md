@@ -1,73 +1,67 @@
-# Welcome to your Lovable project
 
-## Project info
+# Team Pulse
 
-**URL**: https://lovable.dev/projects/5ea4c6e8-fc41-4b0a-b97b-908c279c4228
+Team Pulse is a monthly feedback collection tool designed to gather anonymous insights from team members about their work experience, challenges, and suggestions for improvement.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **Anonymous Monthly Check-ins**: Collect honest feedback without attribution
+- **Likert Scale Questions**: Measure agreement on key workplace factors
+- **Open-ended Questions**: Gather detailed qualitative feedback
+- **Admin Dashboard**: View response summaries and trends
+- **AI-powered Insights**: Generate actionable recommendations from feedback using OpenAI integration
 
-**Use Lovable**
+## Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5ea4c6e8-fc41-4b0a-b97b-908c279c4228) and start prompting.
+### Prerequisites
 
-Changes made via Lovable will be committed automatically to this repo.
+- Node.js (v16 or higher)
+- npm or yarn
 
-**Use your preferred IDE**
+### Installation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+1. Clone the repository:
+```
+git clone https://github.com/yourusername/team-pulse.git
+cd team-pulse
 ```
 
-**Edit a file directly in GitHub**
+2. Install dependencies:
+```
+npm install
+# or
+yarn install
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+3. Start the development server:
+```
+npm run dev
+# or
+yarn dev
+```
 
-**Use GitHub Codespaces**
+4. Open your browser and navigate to `http://localhost:8080`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Using the Admin Dashboard
 
-## What technologies are used for this project?
+1. Navigate to `/admin` route
+2. Enter your OpenAI API key to enable AI analysis features
+3. View response summaries and AI-generated insights
 
-This project is built with:
+## Technologies Used
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- React with TypeScript
+- Tailwind CSS for styling
+- Shadcn UI components
+- React Router for navigation
+- Tanstack React Query for data fetching
+- Recharts for data visualization
+- OpenAI API for AI-powered insights
 
-## How can I deploy this project?
+## License
 
-Simply open [Lovable](https://lovable.dev/projects/5ea4c6e8-fc41-4b0a-b97b-908c279c4228) and click on Share -> Publish.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Can I connect a custom domain to my Lovable project?
+## Contributing
 
-Yes it is!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Contributions are welcome! Please feel free to submit a Pull Request.
