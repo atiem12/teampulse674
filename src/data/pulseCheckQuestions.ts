@@ -10,7 +10,7 @@ export const likertQuestions = [
   },
   {
     id: "communication",
-    question: "Communication within my team has been clear and effective this week.",
+    question: "Communication within my team has been clear and effective this month.",
   },
   {
     id: "growth",
@@ -25,12 +25,12 @@ export const likertQuestions = [
 export const openEndedQuestions = [
   {
     id: "highlight",
-    question: "What was a highlight of your week?",
+    question: "What was a highlight of your month?",
     placeholder: "Something that went well or made you feel good...",
   },
   {
     id: "challenge",
-    question: "What was challenging for you this week?",
+    question: "What was challenging for you this month?",
     placeholder: "A difficult situation or something you struggled with...",
   },
   {
@@ -40,12 +40,12 @@ export const openEndedQuestions = [
   },
   {
     id: "recognition",
-    question: "Is there someone who helped you this week that deserves recognition?",
+    question: "Is there someone who helped you this month that deserves recognition?",
     placeholder: "A colleague who went above and beyond...",
   },
   {
     id: "additional",
-    question: "Is there anything else you'd like to share about your experience this week?",
+    question: "Is there anything else you'd like to share about your experience this month?",
     placeholder: "Any other thoughts, feelings, or suggestions...",
   },
 ];

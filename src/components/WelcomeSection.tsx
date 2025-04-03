@@ -5,9 +5,9 @@ const WelcomeSection = () => {
   return (
     <Card className="mb-6 border-l-4 border-l-blue-500">
       <CardHeader className="pb-2">
-        <CardTitle className="text-xl text-blue-700">Weekly Pulse Check</CardTitle>
+        <CardTitle className="text-xl text-blue-700">Monthly Team Pulse</CardTitle>
         <CardDescription>
-          Share how your week has been going. Your anonymous feedback helps us build a better workplace together.
+          Share how your month has been going. Your anonymous feedback helps us build a better workplace together.
         </CardDescription>
       </CardHeader>
       <CardContent>

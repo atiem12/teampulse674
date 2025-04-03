@@ -36,7 +36,7 @@ const ApiKeyInput = ({ onSave, error }: ApiKeyInputProps) => {
   return (
     <Card>
       <CardHeader className="pb-3">
-        <CardTitle className="text-lg">AI API Key Required</CardTitle>
+        <CardTitle className="text-lg">Team Pulse AI API Key Required</CardTitle>
         <CardDescription>
           Enter your OpenAI API key to enable AI-powered insights
         </CardDescription>

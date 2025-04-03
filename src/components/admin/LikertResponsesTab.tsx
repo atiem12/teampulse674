@@ -29,7 +29,7 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
           <TableCell>{submission.likertResponses.support || "N/A"}</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell>Communication within my team has been clear and effective this week.</TableCell>
+          <TableCell>Communication within my team has been clear and effective this month.</TableCell>
           <TableCell>{getLikertText(submission.likertResponses.communication)}</TableCell>
           <TableCell>{submission.likertResponses.communication || "N/A"}</TableCell>
         </TableRow>

@@ -8,9 +8,9 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-green-50 flex flex-col items-center justify-center p-4">
       <Card className="w-full max-w-3xl shadow-lg">
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold text-blue-700">Pulse Check</CardTitle>
+          <CardTitle className="text-3xl font-bold text-blue-700">Team Pulse</CardTitle>
           <CardDescription className="text-lg mt-2">
-            Weekly employee check-in for engagement and well-being
+            Monthly team check-in for engagement and well-being
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -45,7 +45,7 @@ const Index = () => {
           <div className="flex justify-center pt-4">
             <Link to="/pulse-check">
               <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-md text-lg">
-                Start Weekly Check-in
+                Start Monthly Check-in
               </Button>
             </Link>
           </div>
