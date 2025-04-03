@@ -10,6 +10,7 @@ import AdminLogin from "@/components/admin/AdminLogin";
 import DashboardOverview from "@/components/admin/DashboardOverview";
 import SubmissionDetails from "@/components/admin/SubmissionDetails";
 import SubmissionsList from "@/components/admin/SubmissionsList";
+import AiInsights from "@/components/admin/AiInsights";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -81,13 +82,18 @@ const AdminDashboard = () => {
             </CardContent>
           </Card>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6">
+            {/* Overall visualizations at the top */}
             <DashboardOverview 
               submissions={submissions} 
               onViewSubmission={viewSubmissionDetails} 
             />
-
-            <div className="col-span-1 lg:col-span-2">
+            
+            {/* AI Insights below visualizations */}
+            <AiInsights submissions={submissions} />
+            
+            {/* Submission details or list */}
+            <div>
               {selectedSubmission ? (
                 <SubmissionDetails 
                   submission={selectedSubmission} 

@@ -34,7 +34,7 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
       <h3 className="text-sm font-medium mb-2">{title}</h3>
       <div className="h-32">
         <ChartContainer config={config}>
-          <LineChart data={chartData} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
+          <LineChart data={chartData} margin={{ top: 5, right: 5, left: 0, bottom: 15 }}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis
               dataKey="date"
@@ -42,6 +42,7 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
               tickLine={false}
               axisLine={false}
               tickFormatter={(value) => value}
+              dy={10} // Add space below the axis
             />
             <YAxis
               domain={[0, 5]}

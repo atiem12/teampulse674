@@ -51,7 +51,7 @@ const ResponseDistributionChart = ({
       <h3 className="text-sm font-medium mb-2">{title}</h3>
       <div className="h-40">
         <ChartContainer config={config}>
-          <BarChart data={chartData} margin={{ top: 5, right: 5, left: 5, bottom: 20 }}>
+          <BarChart data={chartData} margin={{ top: 5, right: 5, left: 5, bottom: 25 }}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis 
               dataKey="value" 
@@ -59,6 +59,8 @@ const ResponseDistributionChart = ({
               tickLine={false}
               axisLine={false}
               tickFormatter={(value) => `${value}`}
+              dy={10} // Add space below the axis
+              label={{ value: "Rating", position: "bottom", dy: 10, fontSize: 12 }}
             />
             <YAxis 
               tick={{ fontSize: 10 }}
