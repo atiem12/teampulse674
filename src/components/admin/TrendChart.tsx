@@ -32,9 +32,12 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
   return (
     <div className="w-full">
       <h3 className="text-sm font-medium mb-2">{title}</h3>
-      <div className="h-32">
+      <div className="h-40">
         <ChartContainer config={config}>
-          <LineChart data={chartData} margin={{ top: 5, right: 5, left: 0, bottom: 15 }}>
+          <LineChart 
+            data={chartData} 
+            margin={{ top: 10, right: 10, left: 10, bottom: 40 }} // Increased bottom margin
+          >
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis
               dataKey="date"
@@ -42,7 +45,8 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
               tickLine={false}
               axisLine={false}
               tickFormatter={(value) => value}
-              dy={10} // Add space below the axis
+              dy={20} // Increased space below x-axis
+              interval="preserveStartEnd"
             />
             <YAxis
               domain={[0, 5]}
@@ -50,6 +54,7 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
               tick={{ fontSize: 10 }}
               tickLine={false}
               axisLine={false}
+              width={40} // Added width to prevent label cutting
             />
             <ChartTooltip
               content={
