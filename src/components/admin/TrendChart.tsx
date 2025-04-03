@@ -1,3 +1,4 @@
+
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Submission } from "@/types/pulseCheck";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
@@ -33,13 +34,13 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       <h3 className="text-sm font-medium mb-2">{title}</h3>
-      <div className="h-44">
+      <div className="h-56">
         <ChartContainer config={config}>
           <LineChart 
             data={chartData} 
-            margin={{ top: 10, right: 20, left: 20, bottom: 45 }} // Increased all margins
+            margin={{ top: 10, right: 20, left: 20, bottom: 45 }}
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis
@@ -47,7 +48,7 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
               tick={{ fontSize: 10 }}
               tickLine={false}
               axisLine={false}
-              dy={20} // Space below x-axis
+              dy={20}
               interval="preserveStartEnd"
               label={{ 
                 value: "Submission ID", 
@@ -62,7 +63,7 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
               tick={{ fontSize: 10 }}
               tickLine={false}
               axisLine={false}
-              width={45} // Increased width to prevent label cutting
+              width={45}
             />
             <ChartTooltip
               content={

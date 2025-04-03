@@ -60,75 +60,95 @@ const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewP
                   
                   <TabsContent value="trends" className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <TrendChart 
-                        submissions={submissions} 
-                        dataKey="workload" 
-                        title="Workload Satisfaction" 
-                        color="#3b82f6"
-                      />
-                      <TrendChart 
-                        submissions={submissions} 
-                        dataKey="support" 
-                        title="Team Support" 
-                        color="#10b981"
-                      />
-                      <TrendChart 
-                        submissions={submissions} 
-                        dataKey="communication" 
-                        title="Communication" 
-                        color="#f59e0b"
-                      />
+                      <div className="h-72">
+                        <TrendChart 
+                          submissions={submissions} 
+                          dataKey="workload" 
+                          title="Workload Satisfaction" 
+                          color="#3b82f6"
+                        />
+                      </div>
+                      <div className="h-72">
+                        <TrendChart 
+                          submissions={submissions} 
+                          dataKey="support" 
+                          title="Team Support" 
+                          color="#10b981"
+                        />
+                      </div>
+                      <div className="h-72">
+                        <TrendChart 
+                          submissions={submissions} 
+                          dataKey="communication" 
+                          title="Communication" 
+                          color="#f59e0b"
+                        />
+                      </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <TrendChart 
-                        submissions={submissions} 
-                        dataKey="growth" 
-                        title="Growth Opportunities" 
-                        color="#8b5cf6"
-                      />
-                      <TrendChart 
-                        submissions={submissions} 
-                        dataKey="purpose" 
-                        title="Purpose Clarity" 
-                        color="#ec4899"
-                      />
+                      <div className="h-72">
+                        <TrendChart 
+                          submissions={submissions} 
+                          dataKey="growth" 
+                          title="Growth Opportunities" 
+                          color="#8b5cf6"
+                        />
+                      </div>
+                      <div className="h-72">
+                        <TrendChart 
+                          submissions={submissions} 
+                          dataKey="purpose" 
+                          title="Purpose Clarity" 
+                          color="#ec4899"
+                        />
+                      </div>
                     </div>
                   </TabsContent>
                   
                   <TabsContent value="distribution" className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <ResponseDistributionChart 
-                        submissions={submissions} 
-                        dataKey="workload" 
-                        title="Workload Satisfaction" 
-                        color="#3b82f6"
-                      />
-                      <ResponseDistributionChart 
-                        submissions={submissions} 
-                        dataKey="support" 
-                        title="Team Support" 
-                        color="#10b981"
-                      />
-                      <ResponseDistributionChart 
-                        submissions={submissions} 
-                        dataKey="communication" 
-                        title="Communication" 
-                        color="#f59e0b"
-                      />
+                      <div className="h-72">
+                        <ResponseDistributionChart 
+                          submissions={submissions} 
+                          dataKey="workload" 
+                          title="Workload Satisfaction" 
+                          color="#3b82f6"
+                        />
+                      </div>
+                      <div className="h-72">
+                        <ResponseDistributionChart 
+                          submissions={submissions} 
+                          dataKey="support" 
+                          title="Team Support" 
+                          color="#10b981"
+                        />
+                      </div>
+                      <div className="h-72">
+                        <ResponseDistributionChart 
+                          submissions={submissions} 
+                          dataKey="communication" 
+                          title="Communication" 
+                          color="#f59e0b"
+                        />
+                      </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <ResponseDistributionChart 
-                        submissions={submissions} 
-                        dataKey="growth" 
-                        title="Growth Opportunities" 
-                        color="#8b5cf6"
-                      />
-                      <ResponseDistributionChart 
-                        submissions={submissions} 
-                        dataKey="purpose" 
-                        title="Purpose Clarity" 
-                        color="#ec4899"
-                      />
+                      <div className="h-72">
+                        <ResponseDistributionChart 
+                          submissions={submissions} 
+                          dataKey="growth" 
+                          title="Growth Opportunities" 
+                          color="#8b5cf6"
+                        />
+                      </div>
+                      <div className="h-72">
+                        <ResponseDistributionChart 
+                          submissions={submissions} 
+                          dataKey="purpose" 
+                          title="Purpose Clarity" 
+                          color="#ec4899"
+                        />
+                      </div>
                     </div>
                   </TabsContent>
                 </Tabs>
