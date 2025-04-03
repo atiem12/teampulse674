@@ -10,7 +10,7 @@ import { Submission } from "@/types/pulseCheck";
 const API_URL = "https://api.openai.com/v1/chat/completions";
 
 // Function to get API key from localStorage
-const getApiKey = (): string | null => {
+export const getApiKey = (): string | null => {
   return localStorage.getItem("openai_api_key");
 };
 
@@ -19,16 +19,20 @@ export const saveApiKey = (apiKey: string): void => {
   localStorage.setItem("openai_api_key", apiKey);
 };
 
+// Remove API key from localStorage
+export const removeApiKey = (): void => {
+  localStorage.removeItem("openai_api_key");
+};
+
 // Generate key insights from submissions
 export const generateInsights = async (submissions: Submission[]): Promise<{ 
   keyPoints: string[], 
   recommendation: string 
-} | null> => {
+}> => {
   const apiKey = getApiKey();
   
   if (!apiKey) {
-    console.error("OpenAI API key not found");
-    return null;
+    throw new Error("OpenAI API key not found");
   }
   
   if (submissions.length === 0) {
@@ -80,7 +84,9 @@ export const generateInsights = async (submissions: Submission[]): Promise<{
     });
     
     if (!response.ok) {
-      throw new Error(`API error: ${response.status}`);
+      const errorData = await response.json().catch(() => null);
+      const errorMessage = errorData?.error?.message || `API error: ${response.status}`;
+      throw new Error(errorMessage);
     }
     
     const data = await response.json();
@@ -110,11 +116,8 @@ export const generateInsights = async (submissions: Submission[]): Promise<{
       keyPoints: keyPoints.length > 0 ? keyPoints : ["Could not extract key points from AI response"],
       recommendation: recommendation || "Could not extract recommendation from AI response"
     };
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error generating AI insights:", error);
-    return {
-      keyPoints: ["Error generating insights"],
-      recommendation: "Try again later or check your API key"
-    };
+    throw error;
   }
 };
