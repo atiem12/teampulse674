@@ -1,4 +1,3 @@
-
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Submission } from "@/types/pulseCheck";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
@@ -16,10 +15,13 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
     (a, b) => new Date(a.submittedAt).getTime() - new Date(b.submittedAt).getTime()
   );
 
-  // Prepare data for the chart with submission IDs as x-axis labels
+  // Prepare data for the chart with last 4 digits of submission IDs as x-axis labels
   const chartData = sortedSubmissions.map((submission, index) => ({
     submissionNumber: index + 1,
-    submissionId: submission.id,
+    // Use the last 4 digits of the submission ID for x-axis labels
+    shortId: submission.id.slice(-4),
+    // Keep the full ID for tooltip and reference
+    fullId: submission.id,
     value: parseInt(submission.likertResponses[dataKey] || "0"),
     date: submission.date, // Keep date for tooltip
   }));
@@ -41,7 +43,7 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis
-              dataKey="submissionId"
+              dataKey="shortId"
               tick={{ fontSize: 10 }}
               tickLine={false}
               axisLine={false}
@@ -65,7 +67,7 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
             <ChartTooltip
               content={
                 <ChartTooltipContent
-                  labelFormatter={(label) => `Submission ${label} (${chartData.find(d => d.submissionId === label)?.date})`}
+                  labelFormatter={(label) => `Submission ${label} (${chartData.find(d => d.shortId === label)?.date})`}
                 />
               }
             />
