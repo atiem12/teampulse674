@@ -92,23 +92,23 @@ const PulseCheck = () => {
         <div className="my-6">
           <QuestionRenderer
             currentSection={currentSection}
-            likertResponses={likertResponses}
-            openEndedResponses={openEndedResponses}
+            likertResponses={likertResponses as Record<string, string>}
+            openEndedResponses={openEndedResponses as Record<string, string>}
             onLikertChange={handleLikertChange}
             onOpenEndedChange={handleOpenEndedChange}
           />
         </div>
 
         <QuestionNavigation 
-          onPrevious={handlePrevious}
-          onNext={handleNext}
-          isFirstQuestion={currentSection === 0}
-          isLastQuestion={isLastSection}
-          canProceed={
+          currentSection={currentSection}
+          isCurrentQuestionAnswered={
             isLikertSection 
               ? !!likertResponses[currentQuestion.id] 
               : true
           }
+          onPrevious={handlePrevious}
+          onNext={handleNext}
+          onSubmit={handleSubmit}
         />
       </div>
     </div>

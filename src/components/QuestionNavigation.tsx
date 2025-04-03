@@ -19,13 +19,14 @@ const QuestionNavigation = ({
 }: QuestionNavigationProps) => {
   const totalSteps = likertQuestions.length + openEndedQuestions.length;
   const isLastQuestion = currentSection === totalSteps - 1;
+  const isFirstQuestion = currentSection === 0;
 
   return (
     <div className="flex justify-between mt-8">
       <Button
         variant="outline"
         onClick={onPrevious}
-        disabled={currentSection === 0}
+        disabled={isFirstQuestion}
       >
         Previous
       </Button>
