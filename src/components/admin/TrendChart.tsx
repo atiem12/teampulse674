@@ -1,7 +1,7 @@
 
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Submission } from "@/types/pulseCheck";
-import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis, LabelList } from "recharts";
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
 interface TrendChartProps {
   submissions: Submission[];
@@ -16,12 +16,11 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
     (a, b) => new Date(a.submittedAt).getTime() - new Date(b.submittedAt).getTime()
   );
 
-  // Prepare data for the chart with submission numbers instead of dates
+  // Prepare data for the chart with submission IDs as x-axis labels
   const chartData = sortedSubmissions.map((submission, index) => ({
-    submissionNumber: `#${index + 1}`,
+    submissionNumber: index + 1,
+    submissionId: submission.id,
     value: parseInt(submission.likertResponses[dataKey] || "0"),
-    id: submission.id,
-    fullId: submission.id,
     date: submission.date, // Keep date for tooltip
   }));
 
@@ -42,14 +41,14 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis
-              dataKey="submissionNumber"
+              dataKey="submissionId"
               tick={{ fontSize: 10 }}
               tickLine={false}
               axisLine={false}
               dy={20} // Space below x-axis
               interval="preserveStartEnd"
               label={{ 
-                value: "Submission", 
+                value: "Submission ID", 
                 position: "bottom", 
                 dy: 30, 
                 fontSize: 12 
@@ -66,7 +65,7 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
             <ChartTooltip
               content={
                 <ChartTooltipContent
-                  labelFormatter={(label) => `Submission ${label} (${chartData.find(d => d.submissionNumber === label)?.date})`}
+                  labelFormatter={(label) => `Submission ${label} (${chartData.find(d => d.submissionId === label)?.date})`}
                 />
               }
             />
@@ -78,15 +77,7 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
               dot={{ r: 3, fill: color }}
               activeDot={{ r: 5 }}
               name={title}
-            >
-              <LabelList 
-                dataKey="fullId" 
-                position="top" 
-                fontSize={8} 
-                offset={10}
-                fill="gray"
-              />
-            </Line>
+            />
           </LineChart>
         </ChartContainer>
       </div>
