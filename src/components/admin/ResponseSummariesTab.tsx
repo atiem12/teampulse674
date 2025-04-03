@@ -19,49 +19,47 @@ const ResponseSummariesTab = ({ submission }: ResponseSummariesTabProps) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Response Visualization</CardTitle>
-          <CardDescription>Visual representation of this submission's Likert responses</CardDescription>
+          <CardDescription>Visual representation of this submission's data</CardDescription>
         </CardHeader>
         <CardContent>
-          <RadarChart submission={submission} />
-        </CardContent>
-      </Card>
-    
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">Response Summaries</CardTitle>
-          <CardDescription>Quick overview of open-ended responses</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Question</TableHead>
-                <TableHead>Summary</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell className="font-medium">Highlight</TableCell>
-                <TableCell>{generateTextSummary(openEndedResponsesRecord.highlight)}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">Challenge</TableCell>
-                <TableCell>{generateTextSummary(openEndedResponsesRecord.challenge)}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">Improvement</TableCell>
-                <TableCell>{generateTextSummary(openEndedResponsesRecord.improvement)}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">Recognition</TableCell>
-                <TableCell>{generateTextSummary(openEndedResponsesRecord.recognition)}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">Additional</TableCell>
-                <TableCell>{generateTextSummary(openEndedResponsesRecord.additional)}</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
+          <div className="grid grid-cols-1 gap-6">
+            <div>
+              <RadarChart submission={submission} />
+            </div>
+            <div>
+              <h3 className="text-md font-medium mb-3">Response Summaries</h3>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Question</TableHead>
+                    <TableHead>Summary</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-medium">Highlight</TableCell>
+                    <TableCell>{generateTextSummary(openEndedResponsesRecord.highlight)}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Challenge</TableCell>
+                    <TableCell>{generateTextSummary(openEndedResponsesRecord.challenge)}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Improvement</TableCell>
+                    <TableCell>{generateTextSummary(openEndedResponsesRecord.improvement)}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Recognition</TableCell>
+                    <TableCell>{generateTextSummary(openEndedResponsesRecord.recognition)}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Additional</TableCell>
+                    <TableCell>{generateTextSummary(openEndedResponsesRecord.additional)}</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+          </div>
         </CardContent>
       </Card>
     </div>
