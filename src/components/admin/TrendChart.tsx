@@ -1,7 +1,7 @@
 
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Submission } from "@/types/pulseCheck";
-import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis, LabelList } from "recharts";
 
 interface TrendChartProps {
   submissions: Submission[];
@@ -21,6 +21,7 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
     submissionNumber: `#${index + 1}`,
     value: parseInt(submission.likertResponses[dataKey] || "0"),
     id: submission.id,
+    fullId: submission.id,
     date: submission.date, // Keep date for tooltip
   }));
 
@@ -77,7 +78,15 @@ const TrendChart = ({ submissions, dataKey, title, color = "#3b82f6" }: TrendCha
               dot={{ r: 3, fill: color }}
               activeDot={{ r: 5 }}
               name={title}
-            />
+            >
+              <LabelList 
+                dataKey="fullId" 
+                position="top" 
+                fontSize={8} 
+                offset={10}
+                fill="gray"
+              />
+            </Line>
           </LineChart>
         </ChartContainer>
       </div>
