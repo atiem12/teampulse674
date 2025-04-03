@@ -16,6 +16,7 @@ const AdminDashboard = () => {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [selectedSubmission, setSelectedSubmission] = useState<Submission | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [chartView, setChartView] = useState<"trends" | "distribution">("trends");
 
   useEffect(() => {
     // Check if admin is authenticated

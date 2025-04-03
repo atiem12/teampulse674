@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Submission } from "@/types/pulseCheck";
 import { calculateAverageScore } from "@/utils/submissionUtils";
 import AiInsights from "./AiInsights";
+import TrendChart from "./TrendChart";
+import ResponseDistributionChart from "./ResponseDistributionChart";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface DashboardOverviewProps {
   submissions: Submission[];
@@ -49,6 +52,57 @@ const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewP
                 </div>
               </div>
             </div>
+
+            {submissions.length > 0 && (
+              <Tabs defaultValue="trends">
+                <TabsList className="w-full mb-2">
+                  <TabsTrigger value="trends" className="flex-1">Trends</TabsTrigger>
+                  <TabsTrigger value="distribution" className="flex-1">Distribution</TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="trends" className="space-y-4">
+                  <TrendChart 
+                    submissions={submissions} 
+                    dataKey="workload" 
+                    title="Workload Satisfaction" 
+                    color="#3b82f6"
+                  />
+                  <TrendChart 
+                    submissions={submissions} 
+                    dataKey="support" 
+                    title="Team Support" 
+                    color="#10b981"
+                  />
+                  <TrendChart 
+                    submissions={submissions} 
+                    dataKey="communication" 
+                    title="Communication" 
+                    color="#f59e0b"
+                  />
+                </TabsContent>
+                
+                <TabsContent value="distribution" className="space-y-4">
+                  <ResponseDistributionChart 
+                    submissions={submissions} 
+                    dataKey="workload" 
+                    title="Workload Satisfaction" 
+                    color="#3b82f6"
+                  />
+                  <ResponseDistributionChart 
+                    submissions={submissions} 
+                    dataKey="support" 
+                    title="Team Support" 
+                    color="#10b981"
+                  />
+                  <ResponseDistributionChart 
+                    submissions={submissions} 
+                    dataKey="communication" 
+                    title="Communication" 
+                    color="#f59e0b"
+                  />
+                </TabsContent>
+              </Tabs>
+            )}
           </div>
         </CardContent>
       </Card>
