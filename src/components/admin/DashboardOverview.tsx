@@ -23,34 +23,51 @@ const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewP
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div className="lg:col-span-1">
-              <h3 className="text-sm font-medium">Average Scores (1-5)</h3>
-              <div className="mt-3 space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">Workload Satisfaction</span>
-                  <span className="font-medium">{calculateAverageScore(submissions, "workload")}</span>
+          {/* Moved Average Scores section to the top */}
+          <div className="bg-slate-50 p-6 rounded-lg border">
+            <h3 className="text-lg font-medium mb-4">Overall Likert Metrics</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="p-4 bg-white rounded-lg border shadow-sm">
+                <div className="text-sm text-muted-foreground mb-1">Workload Satisfaction</div>
+                <div className="flex items-baseline">
+                  <span className="text-2xl font-bold mr-1">{calculateAverageScore(submissions, "workload")}</span>
+                  <span className="text-xs text-muted-foreground">/5</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">Team Support</span>
-                  <span className="font-medium">{calculateAverageScore(submissions, "support")}</span>
+              </div>
+              <div className="p-4 bg-white rounded-lg border shadow-sm">
+                <div className="text-sm text-muted-foreground mb-1">Team Support</div>
+                <div className="flex items-baseline">
+                  <span className="text-2xl font-bold mr-1">{calculateAverageScore(submissions, "support")}</span>
+                  <span className="text-xs text-muted-foreground">/5</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">Communication</span>
-                  <span className="font-medium">{calculateAverageScore(submissions, "communication")}</span>
+              </div>
+              <div className="p-4 bg-white rounded-lg border shadow-sm">
+                <div className="text-sm text-muted-foreground mb-1">Communication</div>
+                <div className="flex items-baseline">
+                  <span className="text-2xl font-bold mr-1">{calculateAverageScore(submissions, "communication")}</span>
+                  <span className="text-xs text-muted-foreground">/5</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">Growth Opportunities</span>
-                  <span className="font-medium">{calculateAverageScore(submissions, "growth")}</span>
+              </div>
+              <div className="p-4 bg-white rounded-lg border shadow-sm">
+                <div className="text-sm text-muted-foreground mb-1">Growth Opportunities</div>
+                <div className="flex items-baseline">
+                  <span className="text-2xl font-bold mr-1">{calculateAverageScore(submissions, "growth")}</span>
+                  <span className="text-xs text-muted-foreground">/5</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">Purpose Clarity</span>
-                  <span className="font-medium">{calculateAverageScore(submissions, "purpose")}</span>
+              </div>
+              <div className="p-4 bg-white rounded-lg border shadow-sm">
+                <div className="text-sm text-muted-foreground mb-1">Purpose Clarity</div>
+                <div className="flex items-baseline">
+                  <span className="text-2xl font-bold mr-1">{calculateAverageScore(submissions, "purpose")}</span>
+                  <span className="text-xs text-muted-foreground">/5</span>
                 </div>
               </div>
             </div>
-            
-            <div className="lg:col-span-2">
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            {/* Removed the average scores section from here and kept only the visualization parts */}
+            <div className="lg:col-span-3">
               {submissions.length > 0 && (
                 <Tabs defaultValue="trends">
                   <TabsList className="w-full mb-2">
