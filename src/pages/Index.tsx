@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { ShieldIcon } from "lucide-react";
 
 const Index = () => {
   return (
@@ -42,10 +43,16 @@ const Index = () => {
             </div>
           </div>
           
-          <div className="flex justify-center pt-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
             <Link to="/pulse-check">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-md text-lg">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 rounded-md text-lg w-full">
                 Start Monthly Check-in
+              </Button>
+            </Link>
+            <Link to="/admin">
+              <Button variant="outline" className="flex items-center gap-2">
+                <ShieldIcon className="h-4 w-4" />
+                Admin Dashboard
               </Button>
             </Link>
           </div>
