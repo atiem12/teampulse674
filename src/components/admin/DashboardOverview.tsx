@@ -3,6 +3,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Button } from "@/components/ui/button";
 import { Submission } from "@/types/pulseCheck";
 import { calculateAverageScore } from "@/utils/submissionUtils";
+import AiInsights from "./AiInsights";
 
 interface DashboardOverviewProps {
   submissions: Submission[];
@@ -12,6 +13,8 @@ interface DashboardOverviewProps {
 const DashboardOverview = ({ submissions, onViewSubmission }: DashboardOverviewProps) => {
   return (
     <div className="col-span-1">
+      <AiInsights submissions={submissions} />
+      
       <Card>
         <CardHeader>
           <CardTitle>Overview</CardTitle>
