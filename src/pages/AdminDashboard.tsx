@@ -1,6 +1,8 @@
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Submission } from "@/types/pulseCheck";
 import { isAdminAuthenticated, logoutAdmin } from "@/utils/adminUtils";
 import { loadSubmissions } from "@/utils/submissionUtils";

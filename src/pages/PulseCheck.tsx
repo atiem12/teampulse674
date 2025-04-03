@@ -1,54 +1,95 @@
 
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { savePulseCheckSubmission } from "@/services/pulseCheckService";
+import { getCurrentFormattedDate } from "@/utils/dateUtils";
+import { Submission, LikertResponses, OpenEndedResponses } from "@/types/pulseCheck";
+import { likertQuestions, openEndedQuestions } from "@/data/pulseCheckQuestions";
 import WelcomeSection from "@/components/WelcomeSection";
 import ProgressBar from "@/components/ProgressBar";
 import QuestionRenderer from "@/components/QuestionRenderer";
 import QuestionNavigation from "@/components/QuestionNavigation";
-import { usePulseCheckForm } from "@/hooks/usePulseCheckForm";
-import { getCurrentDate } from "@/utils/dateUtils";
-import { savePulseCheckSubmission } from "@/services/pulseCheckService";
-import { likertQuestions, openEndedQuestions } from "@/data/pulseCheckQuestions";
 
 const PulseCheck = () => {
   const navigate = useNavigate();
-  
-  const {
-    currentSection,
-    likertResponses,
-    openEndedResponses,
-    currentStep,
-    totalSteps,
-    handleLikertChange,
-    handleOpenEndedChange,
-    handleNext,
-    handlePrevious,
-    isCurrentQuestionAnswered,
-  } = usePulseCheckForm();
+  const [currentSection, setCurrentSection] = useState(0);
+  const [likertResponses, setLikertResponses] = useState<LikertResponses>({
+    workload: "",
+    support: "",
+    communication: "",
+    growth: "",
+    purpose: ""
+  });
+  const [openEndedResponses, setOpenEndedResponses] = useState<OpenEndedResponses>({
+    highlight: "",
+    challenge: "",
+    improvement: "",
+    recognition: "",
+    additional: ""
+  });
+
+  const totalSections = likertQuestions.length + openEndedQuestions.length;
+
+  const handleLikertChange = (id: string, value: string) => {
+    setLikertResponses((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleOpenEndedChange = (id: string, value: string) => {
+    setOpenEndedResponses((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleNext = () => {
+    if (currentSection < totalSections - 1) {
+      setCurrentSection(currentSection + 1);
+    } else {
+      handleSubmit();
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentSection > 0) {
+      setCurrentSection(currentSection - 1);
+    }
+  };
 
   const handleSubmit = () => {
-    // Save the submission
-    const submission = savePulseCheckSubmission(
-      likertResponses, 
+    // Save submission to local storage
+    const submission: Submission = savePulseCheckSubmission(
+      likertResponses,
       openEndedResponses,
-      getCurrentDate
+      getCurrentFormattedDate
     );
+
+    console.log("Submission saved:", submission);
     
-    console.log("Likert responses:", likertResponses);
-    console.log("Open-ended responses:", openEndedResponses);
-    
-    toast.success("Your feedback has been submitted successfully!");
+    // Redirect to success page
     navigate("/success");
   };
 
+  const getCurrentQuestion = () => {
+    if (currentSection < likertQuestions.length) {
+      return likertQuestions[currentSection];
+    } else {
+      return openEndedQuestions[currentSection - likertQuestions.length];
+    }
+  };
+
+  const currentQuestion = getCurrentQuestion();
+  const isLikertSection = currentSection < likertQuestions.length;
+  const isLastSection = currentSection === totalSections - 1;
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-green-50 py-10 px-4">
-      <div className="max-w-2xl mx-auto space-y-6">
+    <div className="min-h-screen bg-gray-50 py-8 px-4">
+      <div className="max-w-2xl mx-auto">
         <WelcomeSection />
         
-        <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
+        <ProgressBar 
+          currentStep={currentSection + 1} 
+          totalSteps={totalSections} 
+        />
         
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="my-6">
           <QuestionRenderer
             currentSection={currentSection}
             likertResponses={likertResponses}
@@ -56,15 +97,19 @@ const PulseCheck = () => {
             onLikertChange={handleLikertChange}
             onOpenEndedChange={handleOpenEndedChange}
           />
-          
-          <QuestionNavigation
-            currentSection={currentSection}
-            isCurrentQuestionAnswered={isCurrentQuestionAnswered()}
-            onPrevious={handlePrevious}
-            onNext={handleNext}
-            onSubmit={handleSubmit}
-          />
         </div>
+
+        <QuestionNavigation 
+          onPrevious={handlePrevious}
+          onNext={handleNext}
+          isFirstQuestion={currentSection === 0}
+          isLastQuestion={isLastSection}
+          canProceed={
+            isLikertSection 
+              ? !!likertResponses[currentQuestion.id] 
+              : true
+          }
+        />
       </div>
     </div>
   );
