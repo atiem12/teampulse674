@@ -92,8 +92,8 @@ const PulseCheck = () => {
         <div className="my-6">
           <QuestionRenderer
             currentSection={currentSection}
-            likertResponses={likertResponses as Record<string, string>}
-            openEndedResponses={openEndedResponses as Record<string, string>}
+            likertResponses={likertResponses as unknown as Record<string, string>}
+            openEndedResponses={openEndedResponses as unknown as Record<string, string>}
             onLikertChange={handleLikertChange}
             onOpenEndedChange={handleOpenEndedChange}
           />

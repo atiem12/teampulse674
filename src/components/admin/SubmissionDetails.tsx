@@ -5,6 +5,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Submission } from "@/types/pulseCheck";
 import { getLikertText } from "@/utils/submissionUtils";
+import { generateTextSummary } from "@/utils/textUtils";
 
 interface SubmissionDetailsProps {
   submission: Submission;
@@ -34,6 +35,7 @@ const SubmissionDetails = ({ submission, onBack }: SubmissionDetailsProps) => {
           <TabsList className="mb-4">
             <TabsTrigger value="likert">Likert Responses</TabsTrigger>
             <TabsTrigger value="open-ended">Open-Ended Responses</TabsTrigger>
+            <TabsTrigger value="summaries">Response Summaries</TabsTrigger>
           </TabsList>
           
           <TabsContent value="likert" className="space-y-4">
@@ -108,6 +110,47 @@ const SubmissionDetails = ({ submission, onBack }: SubmissionDetailsProps) => {
                 </p>
               </div>
             </div>
+          </TabsContent>
+          
+          <TabsContent value="summaries" className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Response Summaries</CardTitle>
+                <CardDescription>Quick overview of open-ended responses</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Question</TableHead>
+                      <TableHead>Summary</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell className="font-medium">Highlight</TableCell>
+                      <TableCell>{generateTextSummary(submission.openEndedResponses.highlight)}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Challenge</TableCell>
+                      <TableCell>{generateTextSummary(submission.openEndedResponses.challenge)}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Improvement</TableCell>
+                      <TableCell>{generateTextSummary(submission.openEndedResponses.improvement)}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Recognition</TableCell>
+                      <TableCell>{generateTextSummary(submission.openEndedResponses.recognition)}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-medium">Additional</TableCell>
+                      <TableCell>{generateTextSummary(submission.openEndedResponses.additional)}</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
           </TabsContent>
         </Tabs>
       </CardContent>
