@@ -1,35 +1,13 @@
 
-interface LikertResponses {
-  workload: string;
-  support: string;
-  communication: string;
-  growth: string;
-  purpose: string;
-}
-
-interface OpenEndedResponses {
-  highlight: string;
-  challenge: string;
-  improvement: string;
-  recognition: string;
-  additional: string;
-}
-
-export interface PulseCheckSubmission {
-  id: string;
-  date: string;
-  submittedAt: string;
-  likertResponses: LikertResponses;
-  openEndedResponses: OpenEndedResponses;
-}
+import { Submission, LikertResponses, OpenEndedResponses } from "@/types/pulseCheck";
 
 export const savePulseCheckSubmission = (
   likertResponses: LikertResponses,
   openEndedResponses: OpenEndedResponses,
   getCurrentDate: () => string
-): PulseCheckSubmission => {
+): Submission => {
   // Create a submission object with all responses and metadata
-  const submission: PulseCheckSubmission = {
+  const submission: Submission = {
     id: Date.now().toString(), // Simple unique ID based on timestamp
     date: getCurrentDate(),
     submittedAt: new Date().toISOString(),
@@ -38,7 +16,7 @@ export const savePulseCheckSubmission = (
   };
 
   // Get existing submissions from localStorage or initialize empty array
-  const existingSubmissions: PulseCheckSubmission[] = JSON.parse(localStorage.getItem('pulseCheckSubmissions') || '[]');
+  const existingSubmissions: Submission[] = JSON.parse(localStorage.getItem('pulseCheckSubmissions') || '[]');
   
   // Add new submission to the array
   const updatedSubmissions = [...existingSubmissions, submission];
