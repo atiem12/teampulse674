@@ -20,7 +20,7 @@ const VisualizationsTabs = ({ submissions }: VisualizationsTabsProps) => {
       
       <TabsContent value="trends" className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="h-80">
+          <div className="h-96"> {/* Increased height */}
             <TrendChart 
               submissions={submissions} 
               dataKey="workload" 
@@ -28,7 +28,7 @@ const VisualizationsTabs = ({ submissions }: VisualizationsTabsProps) => {
               color="#3b82f6"
             />
           </div>
-          <div className="h-80">
+          <div className="h-96"> {/* Increased height */}
             <TrendChart 
               submissions={submissions} 
               dataKey="support" 
@@ -38,7 +38,7 @@ const VisualizationsTabs = ({ submissions }: VisualizationsTabsProps) => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="h-80">
+          <div className="h-96"> {/* Increased height */}
             <TrendChart 
               submissions={submissions} 
               dataKey="communication" 
@@ -46,7 +46,7 @@ const VisualizationsTabs = ({ submissions }: VisualizationsTabsProps) => {
               color="#f59e0b"
             />
           </div>
-          <div className="h-80">
+          <div className="h-96"> {/* Increased height */}
             <TrendChart 
               submissions={submissions} 
               dataKey="growth" 
@@ -56,7 +56,7 @@ const VisualizationsTabs = ({ submissions }: VisualizationsTabsProps) => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="h-80">
+          <div className="h-96"> {/* Increased height */}
             <TrendChart 
               submissions={submissions} 
               dataKey="purpose" 
@@ -69,7 +69,7 @@ const VisualizationsTabs = ({ submissions }: VisualizationsTabsProps) => {
       
       <TabsContent value="distribution" className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="h-80">
+          <div className="h-96"> {/* Increased height */}
             <ResponseDistributionChart 
               submissions={submissions} 
               dataKey="workload" 
@@ -77,7 +77,7 @@ const VisualizationsTabs = ({ submissions }: VisualizationsTabsProps) => {
               color="#3b82f6"
             />
           </div>
-          <div className="h-80">
+          <div className="h-96"> {/* Increased height */}
             <ResponseDistributionChart 
               submissions={submissions} 
               dataKey="support" 
@@ -87,7 +87,7 @@ const VisualizationsTabs = ({ submissions }: VisualizationsTabsProps) => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="h-80">
+          <div className="h-96"> {/* Increased height */}
             <ResponseDistributionChart 
               submissions={submissions} 
               dataKey="communication" 
@@ -95,7 +95,7 @@ const VisualizationsTabs = ({ submissions }: VisualizationsTabsProps) => {
               color="#f59e0b"
             />
           </div>
-          <div className="h-80">
+          <div className="h-96"> {/* Increased height */}
             <ResponseDistributionChart 
               submissions={submissions} 
               dataKey="growth" 
@@ -105,7 +105,7 @@ const VisualizationsTabs = ({ submissions }: VisualizationsTabsProps) => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="h-80">
+          <div className="h-96"> {/* Increased height */}
             <ResponseDistributionChart 
               submissions={submissions} 
               dataKey="purpose" 
