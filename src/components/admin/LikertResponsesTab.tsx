@@ -89,13 +89,13 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
 
       {/* Data Visualization */}
       <Card>
-        <CardContent className="pt-6 pb-8">
-          <h3 className="text-lg font-medium mb-6">Response Visualization</h3>
-          <div className="h-96">
+        <CardContent className="pt-6 pb-4">
+          <h3 className="text-lg font-medium mb-4">Response Visualization</h3>
+          <div className="h-80">
             <ChartContainer config={config}>
               <BarChart 
                 data={chartData} 
-                margin={{ top: 20, right: 30, left: 40, bottom: 70 }}
+                margin={{ top: 10, right: 30, left: 40, bottom: 50 }}
               >
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis 
@@ -103,7 +103,7 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
                   tick={{ fontSize: 12 }}
                   tickLine={false}
                   axisLine={false}
-                  height={60}
+                  height={40}
                 />
                 <YAxis 
                   domain={[0, 5]}
@@ -111,7 +111,7 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
                   tick={{ fontSize: 12 }}
                   tickLine={false}
                   axisLine={false}
-                  width={45}
+                  width={40}
                 />
                 <ChartTooltip
                   content={

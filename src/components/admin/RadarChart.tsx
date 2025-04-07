@@ -43,12 +43,12 @@ const RadarChart = ({ submission }: RadarChartProps) => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto h-72">
+    <div className="w-full h-full">
       <ChartContainer config={config} className="w-full h-full">
         <RechartsRadarChart 
           data={likertData} 
-          outerRadius="75%" 
-          margin={{ top: 20, right: 30, bottom: 20, left: 30 }}
+          outerRadius="60%" 
+          margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
         >
           <PolarGrid />
           <PolarAngleAxis dataKey="subject" />
