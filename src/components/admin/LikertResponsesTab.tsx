@@ -68,11 +68,11 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
       </div>
 
       <Card className="bg-slate-50">
-        <CardContent className="pt-4 pb-2 px-4">
-          <h3 className="text-lg font-medium mb-2">Response Summary</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+        <CardContent className="pt-6">
+          <h3 className="text-lg font-medium mb-4">Response Summary</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {chartData.map((item) => (
-              <div key={item.name} className="p-2 bg-white rounded-lg border shadow-sm">
+              <div key={item.name} className="p-4 bg-white rounded-lg border shadow-sm">
                 <div className="text-sm text-muted-foreground mb-1">{item.label}</div>
                 <div className="flex items-baseline">
                   <span className="text-2xl font-bold mr-1">{item.value}</span>
@@ -85,10 +85,10 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
       </Card>
 
       <Card className="p-1">
-        <CardContent className="pt-2 pb-1 px-2">
-          <h3 className="text-sm font-medium mb-1">Response Visualization</h3>
-          <div className="h-[16rem] w-full flex justify-center items-center">
-            <div className="w-[12rem] h-[11rem]">
+        <CardContent className="pt-4 pb-2">
+          <h3 className="text-lg font-medium mb-2">Response Visualization</h3>
+          <div className="h-[18rem] w-full flex justify-center items-center">
+            <div className="w-[14rem] h-[13rem]">
               <ChartContainer config={config}>
                 <BarChart 
                   data={chartData} 
