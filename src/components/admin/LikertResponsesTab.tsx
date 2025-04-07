@@ -90,27 +90,27 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
       <Card>
         <CardContent className="pt-6 pb-4">
           <h3 className="text-lg font-medium mb-4">Response Visualization</h3>
-          <div className="h-64">
+          <div className="h-40">
             <ChartContainer config={config}>
               <BarChart 
                 data={chartData} 
-                margin={{ top: 10, right: 20, left: 20, bottom: 30 }}
+                margin={{ top: 5, right: 10, left: 10, bottom: 20 }}
               >
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis 
                   dataKey="name" 
-                  tick={{ fontSize: 10 }}
+                  tick={{ fontSize: 8 }}
                   tickLine={false}
                   axisLine={false}
-                  height={30}
+                  height={20}
                 />
                 <YAxis 
                   domain={[0, 5]}
                   ticks={[0, 1, 2, 3, 4, 5]}
-                  tick={{ fontSize: 10 }}
+                  tick={{ fontSize: 8 }}
                   tickLine={false}
                   axisLine={false}
-                  width={30}
+                  width={20}
                 />
                 <ChartTooltip
                   content={
