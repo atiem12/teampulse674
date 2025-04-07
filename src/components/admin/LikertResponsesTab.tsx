@@ -91,28 +91,30 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
       <Card className="p-2">
         <CardContent className="pt-6 pb-4">
           <h3 className="text-lg font-medium mb-4">Response Visualization</h3>
-          <div className="h-[15rem] w-full flex justify-center">
-            <div className="w-[10rem]">
+          <div className="h-[20rem] w-full flex justify-center items-center">
+            <div className="w-[15rem] h-[15rem]">
               <ChartContainer config={config}>
                 <BarChart 
                   data={chartData} 
-                  margin={{ top: 2, right: 5, left: 5, bottom: 10 }}
+                  margin={{ top: 10, right: 10, left: 10, bottom: 20 }}
+                  width={250}
+                  height={250}
                 >
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis 
                     dataKey="name" 
-                    tick={{ fontSize: 6 }}
+                    tick={{ fontSize: 8 }}
                     tickLine={false}
                     axisLine={false}
-                    height={15}
+                    height={20}
                   />
                   <YAxis 
                     domain={[0, 5]}
                     ticks={[0, 1, 2, 3, 4, 5]}
-                    tick={{ fontSize: 6 }}
+                    tick={{ fontSize: 8 }}
                     tickLine={false}
                     axisLine={false}
-                    width={15}
+                    width={30}
                   />
                   <ChartTooltip
                     content={
@@ -128,7 +130,7 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
                   <Bar 
                     dataKey="value" 
                     name="Score"
-                    radius={[2, 2, 0, 0]}
+                    radius={[4, 4, 0, 0]}
                     fill="#3b82f6"
                   />
                 </BarChart>
@@ -142,3 +144,4 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
 };
 
 export default LikertResponsesTab;
+
