@@ -1,4 +1,3 @@
-
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Submission } from "@/types/pulseCheck";
 import { getLikertText } from "@/utils/submissionUtils";
@@ -11,7 +10,6 @@ interface LikertResponsesTabProps {
 }
 
 const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
-  // Data for the bar chart visualization
   const chartData = [
     { name: "Workload", value: parseInt(submission.likertResponses.workload || "0"), label: "Workload Satisfaction", color: "#3b82f6" },
     { name: "Support", value: parseInt(submission.likertResponses.support || "0"), label: "Team Support", color: "#10b981" },
@@ -28,7 +26,6 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
 
   return (
     <div className="space-y-12">
-      {/* Likert Scale Responses Table */}
       <div>
         <h3 className="text-lg font-medium mb-4">Likert Scale Responses</h3>
         <Table>
@@ -69,7 +66,6 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
         </Table>
       </div>
 
-      {/* Overall Averages Section - Added above the data visualization */}
       <Card className="bg-slate-50">
         <CardContent className="pt-6">
           <h3 className="text-lg font-medium mb-4">Response Summary</h3>
@@ -87,23 +83,22 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
         </CardContent>
       </Card>
 
-      {/* Data Visualization */}
-      <Card className="p-2">
-        <CardContent className="pt-6 pb-4">
-          <h3 className="text-lg font-medium mb-4">Response Visualization</h3>
-          <div className="h-[20rem] w-full flex justify-center items-center">
-            <div className="w-[15rem] h-[15rem]">
+      <Card className="p-1">
+        <CardContent className="pt-4 pb-2">
+          <h3 className="text-lg font-medium mb-2">Response Visualization</h3>
+          <div className="h-[18rem] w-full flex justify-center items-center">
+            <div className="w-[14rem] h-[13rem]">
               <ChartContainer config={config}>
                 <BarChart 
                   data={chartData} 
-                  margin={{ top: 10, right: 10, left: 10, bottom: 20 }}
-                  width={250}
-                  height={250}
+                  margin={{ top: 5, right: 5, left: 5, bottom: 10 }}
+                  width={230}
+                  height={230}
                 >
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis 
                     dataKey="name" 
-                    tick={{ fontSize: 8 }}
+                    tick={{ fontSize: 10 }}
                     tickLine={false}
                     axisLine={false}
                     height={20}
@@ -111,7 +106,7 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
                   <YAxis 
                     domain={[0, 5]}
                     ticks={[0, 1, 2, 3, 4, 5]}
-                    tick={{ fontSize: 8 }}
+                    tick={{ fontSize: 10 }}
                     tickLine={false}
                     axisLine={false}
                     width={30}
@@ -144,4 +139,3 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
 };
 
 export default LikertResponsesTab;
-
