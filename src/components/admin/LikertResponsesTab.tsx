@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Submission } from "@/types/pulseCheck";
@@ -103,8 +102,8 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
                     tick={{ fontSize: 10 }}
                     tickLine={false}
                     axisLine={false}
-                    height={30}
-                    width={30}
+                    height={50}
+                    width={50}
                   />
                   <YAxis 
                     domain={[0, 5]}
@@ -112,7 +111,8 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
                     tick={{ fontSize: 10 }}
                     tickLine={false}
                     axisLine={false}
-                    width={20}
+                    width={50}
+                    height={50}
                   />
                   <ChartTooltip
                     content={
