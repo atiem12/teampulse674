@@ -1,4 +1,3 @@
-
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Submission } from "@/types/pulseCheck";
 import { getLikertText } from "@/utils/submissionUtils";
@@ -91,27 +90,27 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
       <Card>
         <CardContent className="pt-6 pb-4">
           <h3 className="text-lg font-medium mb-4">Response Visualization</h3>
-          <div className="h-80">
+          <div className="h-64">
             <ChartContainer config={config}>
               <BarChart 
                 data={chartData} 
-                margin={{ top: 10, right: 30, left: 40, bottom: 50 }}
+                margin={{ top: 10, right: 20, left: 20, bottom: 30 }}
               >
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis 
                   dataKey="name" 
-                  tick={{ fontSize: 12 }}
+                  tick={{ fontSize: 10 }}
                   tickLine={false}
                   axisLine={false}
-                  height={40}
+                  height={30}
                 />
                 <YAxis 
                   domain={[0, 5]}
                   ticks={[0, 1, 2, 3, 4, 5]}
-                  tick={{ fontSize: 12 }}
+                  tick={{ fontSize: 10 }}
                   tickLine={false}
                   axisLine={false}
-                  width={40}
+                  width={30}
                 />
                 <ChartTooltip
                   content={
