@@ -1,3 +1,5 @@
+
+import React from 'react';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Submission } from "@/types/pulseCheck";
 import { getLikertText } from "@/utils/submissionUtils";
@@ -102,6 +104,7 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
                     tickLine={false}
                     axisLine={false}
                     height={30}
+                    width={30}
                   />
                   <YAxis 
                     domain={[0, 5]}
