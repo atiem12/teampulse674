@@ -101,7 +101,7 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
                     tick={{ fontSize: 10 }}
                     tickLine={false}
                     axisLine={false}
-                    height={18}
+                    height={30}
                   />
                   <YAxis 
                     domain={[0, 5]}
@@ -109,7 +109,7 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
                     tick={{ fontSize: 10 }}
                     tickLine={false}
                     axisLine={false}
-                    width={12}
+                    width={20}
                   />
                   <ChartTooltip
                     content={
