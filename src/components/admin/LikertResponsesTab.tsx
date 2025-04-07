@@ -1,9 +1,9 @@
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Submission } from "@/types/pulseCheck";
 import { getLikertText } from "@/utils/submissionUtils";
+import { Card, CardContent } from "@/components/ui/card";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
-import { Card, CardContent } from "@/components/ui/card";
 
 interface LikertResponsesTabProps {
   submission: Submission;
@@ -101,7 +101,7 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
                     tick={{ fontSize: 10 }}
                     tickLine={false}
                     axisLine={false}
-                    height={20}
+                    height={18}
                   />
                   <YAxis 
                     domain={[0, 5]}
@@ -109,7 +109,7 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
                     tick={{ fontSize: 10 }}
                     tickLine={false}
                     axisLine={false}
-                    width={30}
+                    width={12}
                   />
                   <ChartTooltip
                     content={
