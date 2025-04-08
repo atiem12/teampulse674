@@ -94,7 +94,7 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
                   data={chartData} 
                   margin={{ top: 20, right: 30, left: 20, bottom: 30 }}
                   width={500}
-                  height={45}
+                  height={250}
                 >
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis 
