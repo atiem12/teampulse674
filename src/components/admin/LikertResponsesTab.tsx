@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Submission } from "@/types/pulseCheck";
@@ -85,35 +84,31 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
         </CardContent>
       </Card>
 
-      <Card className="p-1">
-        <CardContent className="pt-4 pb-2">
-          <h3 className="text-lg font-medium mb-2">Response Visualization</h3>
-          <div className="h-[18rem] w-full flex justify-center items-center">
-            <div className="w-[14rem] h-[13rem]">
+      <Card className="p-0">
+        <CardContent className="p-2">
+          <h3 className="text-lg font-medium mb-2 ml-2">Response Visualization</h3>
+          <div className="flex justify-center items-center w-full">
+            <div className="w-full h-72">
               <ChartContainer config={config}>
                 <BarChart 
                   data={chartData} 
-                  margin={{ top: 5, right: 5, left: 5, bottom: 10 }}
-                  width={200}
-                  height={180}
+                  margin={{ top: 20, right: 30, left: 20, bottom: 30 }}
+                  width={500}
+                  height={250}
                 >
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis 
                     dataKey="name" 
-                    tick={{ fontSize: 10 }}
+                    tick={{ fontSize: 12 }}
                     tickLine={false}
                     axisLine={false}
-                    height={50}
-                    width={50}
                   />
                   <YAxis 
                     domain={[0, 5]}
                     ticks={[0, 1, 2, 3, 4, 5]}
-                    tick={{ fontSize: 10 }}
+                    tick={{ fontSize: 12 }}
                     tickLine={false}
                     axisLine={false}
-                    width={50}
-                    height={50}
                   />
                   <ChartTooltip
                     content={
