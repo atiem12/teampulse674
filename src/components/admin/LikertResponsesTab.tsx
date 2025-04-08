@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Submission } from "@/types/pulseCheck";
@@ -86,7 +85,7 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
       </Card>
 
       <Card>
-        <CardContent>
+        <CardContent className="pt-8">
           <h3 className="text-lg font-medium mb-4">Response Visualization</h3>
           <div className="w-full flex justify-center">
             <ChartContainer config={config} className="w-full h-80">
