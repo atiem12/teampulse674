@@ -109,6 +109,7 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
                     tick={{ fontSize: 12 }}
                     tickLine={false}
                     axisLine={false}
+                    width={27}
                   />
                   <ChartTooltip
                     content={
