@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { Submission } from "@/types/pulseCheck";
@@ -84,53 +85,53 @@ const LikertResponsesTab = ({ submission }: LikertResponsesTabProps) => {
         </CardContent>
       </Card>
 
-      <Card className="p-0">
-        <CardContent className="p-2">
-          <h3 className="text-lg font-medium mb-2 ml-2">Response Visualization</h3>
-          <div className="flex justify-center items-center w-full">
-            <div className="w-full h-72">
-              <ChartContainer config={config}>
-                <BarChart 
-                  data={chartData} 
-                  margin={{ top: 20, right: 30, left: 20, bottom: 30 }}
-                  width={500}
-                  height={250}
-                >
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis 
-                    dataKey="name" 
-                    tick={{ fontSize: 12 }}
-                    tickLine={false}
-                    axisLine={false}
-                  />
-                  <YAxis 
-                    domain={[0, 5]}
-                    ticks={[0, 1, 2, 3, 4, 5]}
-                    tick={{ fontSize: 12 }}
-                    tickLine={false}
-                    axisLine={false}
-                    width={27}
-                  />
-                  <ChartTooltip
-                    content={
-                      <ChartTooltipContent
-                        labelFormatter={(label) => {
-                          const item = chartData.find(d => d.name === label);
-                          return item ? item.label : label;
-                        }}
-                        formatter={(value) => [`${value}`, 'Score']}
-                      />
-                    }
-                  />
-                  <Bar 
-                    dataKey="value" 
-                    name="Score"
-                    radius={[4, 4, 0, 0]}
-                    fill="#3b82f6"
-                  />
-                </BarChart>
-              </ChartContainer>
-            </div>
+      <Card>
+        <CardContent>
+          <h3 className="text-lg font-medium mb-4">Response Visualization</h3>
+          <div className="w-full flex justify-center">
+            <ChartContainer config={config} className="w-full h-80">
+              <BarChart 
+                data={chartData} 
+                margin={{ top: 20, right: 30, left: 10, bottom: 30 }}
+                width={undefined}
+                height={undefined}
+                layout="horizontal"
+              >
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis 
+                  dataKey="name" 
+                  tick={{ fontSize: 12 }}
+                  tickLine={false}
+                  axisLine={false}
+                  height={40}
+                />
+                <YAxis 
+                  domain={[0, 5]}
+                  ticks={[0, 1, 2, 3, 4, 5]}
+                  tick={{ fontSize: 12 }}
+                  tickLine={false}
+                  axisLine={false}
+                  width={27}
+                />
+                <ChartTooltip
+                  content={
+                    <ChartTooltipContent
+                      labelFormatter={(label) => {
+                        const item = chartData.find(d => d.name === label);
+                        return item ? item.label : label;
+                      }}
+                      formatter={(value) => [`${value}`, 'Score']}
+                    />
+                  }
+                />
+                <Bar 
+                  dataKey="value" 
+                  name="Score"
+                  radius={[4, 4, 0, 0]}
+                  fill="#3b82f6"
+                />
+              </BarChart>
+            </ChartContainer>
           </div>
         </CardContent>
       </Card>
